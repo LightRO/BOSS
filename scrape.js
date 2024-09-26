@@ -10,7 +10,7 @@ const { get } = axios.create({
 });
 
 const TASKSHEET_BASE = 'https://npts.app.nintendo.net/p01/tasksheet/1';
-const TASKSHEET_BASE_NEW = 'https://npts.app.pretendo.cc/p01/tasksheet/1';
+const TASKSHEET_BASE_NEW = 'https://npts.app.brocatech.com/p01/tasksheet/1';
 
 const TASKSHEETS = [
 	{
@@ -100,7 +100,7 @@ for (const tasksheet of TASKSHEETS) {
 
 		get(`${TASKSHEET_BASE}/${tasksheetId}/${tasksheetFileName}?c=US&l=en`)
 			.then(response => {
-				const replacedUrls = response.data.replaceAll('nintendo.net', 'pretendo.cc');
+				const replacedUrls = response.data.replaceAll('nintendo.net', 'brocatech.com');
 
 				if (tasksheetFileName.includes('/')) {
 					fs.writeFileSync(`cdn/tasksheet/1/${tasksheetId}/_subfolder/${tasksheetFileName}`, replacedUrls);
